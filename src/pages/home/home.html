@@ -1,14 +1,67 @@
 <ion-header>
   <ion-navbar>
-    <ion-title>
-      Ionic Blank
-    </ion-title>
+
+    <ion-title>Quran bookmark</ion-title>
+    <ion-buttons end>
+      <button ion-button icon-only (click)="reset()">
+        Reset
+        <ion-icon name="refresh"></ion-icon>
+      </button>
+    </ion-buttons>
   </ion-navbar>
 </ion-header>
 
 <ion-content padding>
-  The world is your oyster.
-  <p>
-    If you get lost, the <a href="http://ionicframework.com/docs/v2">docs</a> will be your guide.
-  </p>
+    <ion-list>
+      <ion-row>
+        <ion-col>
+          <button ion-button icon-left  no-padding full small (click)="adjust(-1)">
+            <ion-icon name="arrow-back"></ion-icon>
+          </button>
+        </ion-col>
+        <ion-col>
+          <button ion-button icon-left  no-padding full small (click)="adjust(1)">
+            <ion-icon name="arrow-forward"></ion-icon>
+          </button>
+        </ion-col>
+      </ion-row>
+
+      <ion-item text-center color="primary" (click)="presentPrompt2()">
+        Page <ion-icon name="book"></ion-icon>
+      </ion-item>
+
+      <ion-item color="secondary"  margin-vertical (press)="adjust()">
+        <ion-col>{{page}}</ion-col>
+      </ion-item>
+
+      <ion-item color="primary">
+        My Target <ion-icon item-right name="clipboard"></ion-icon>
+      </ion-item>
+      <ion-item (click)="presentPrompt('ppr')">
+        Pages per Read
+        <ion-badge item-right>{{ppr}}</ion-badge>
+      </ion-item>
+      <ion-item (click)="presentPrompt('rpd')">
+        Read per Day
+        <ion-badge item-right>{{rpd}}</ion-badge>
+      </ion-item>
+      <ion-item color="primary">
+        Predictions <ion-icon item-right name="paper-plane"></ion-icon>
+      </ion-item>
+      <ion-item (click)="tukarDate()">
+        Khatam
+        <ion-badge item-right color="secondary">{{k_state ? k_day : k_date}}</ion-badge>
+      </ion-item>
+      <ion-item>
+        Khatam per month 
+        <ion-badge item-right color="secondary">{{k_month}}</ion-badge>
+      </ion-item>
+      <ion-item>
+        Khatam per year
+        <ion-badge item-right color="secondary">{{k_year}}</ion-badge>
+      </ion-item>
+    </ion-list>
+
+    
+
 </ion-content>
